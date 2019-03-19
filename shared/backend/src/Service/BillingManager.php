@@ -209,6 +209,7 @@ class BillingManager
     {
         $userArr = $this->userManager->getUserById($userId);
         if (!$userArr) {
+            $this->con->rollBack();
             throw new BillingException("User with id: {$userId} not found");
         }
 
